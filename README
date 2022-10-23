@@ -1,6 +1,6 @@
 Introduction:
 ==========================
-  lpscbuild - Open Source (GPL) C/C++ Automated Build System Environment
+  autobuild - Open Source (GPL) C/C++ Automated Build System Environment
 
 Features:
 --------------------------
@@ -63,7 +63,7 @@ Directory Structure:
 
 Usage
 --------------------------
-  ./lpscbuild <options> <source_directory> <test_framework>
+  ./autobuild <options> <source_directory> <test_framework>
 
     Note: if Test Framework not provided, it will default to ctest framework will be used
 
@@ -71,30 +71,30 @@ Examples
 --------------------------
       # build with all default options. Default options are:
       # shared libraries, gtest is used as test frameowrk, fresh build, mutation testing enabled
-      ./lpscbuild -a
+      ./autobuild -a
 
       # build static libraries.
-      ./lpscbuild -b 'static'
-      ./lpscbuild --build=static
+      ./autobuild -b 'static'
+      ./autobuild --build=static
 
       # build shared libraries.
-      ./lpscbuild -b 'shared'
-      ./lpscbuild --build=shared
+      ./autobuild -b 'shared'
+      ./autobuild --build=shared
 
       # build fresh by cleaning previously build files
-      ./lpscbuild -f
+      ./autobuild -f
 
       # build static libraries.
-      ./lpscbuild -t 'gtest'
-      ./lpscbuild --test-framework=gtest
+      ./autobuild -t 'gtest'
+      ./autobuild --test-framework=gtest
 
       # build for mutation tests
-      ./lpscbuild -m
-      ./lpscbuild --mutation-testing
+      ./autobuild -m
+      ./autobuild --mutation-testing
 
       # build for provided directory
-      ./lpscbuild -d 'directory_path'
-      ./lpscbuild --directory=directory_path
+      ./autobuild -d 'directory_path'
+      ./autobuild --directory=directory_path
     
 Reports:
 --------------------------

@@ -30,7 +30,7 @@ export LANG="en_US"
 BASENAME="$(basename "${0}")"
 PARAMETER=${1}
 BUILD_DIRECTORY="build"
-LPSCBUILD_DIRECTORY=${PWD}
+autobuild_DIRECTORY=${PWD}
 
 
 # program version
@@ -140,7 +140,7 @@ show_help() {
     cat <<EOF
 Usage: $BASENAME [OPTIONS...]
 
-LPSCBuild an Open Source (GPL) C/C++ Build System Setup.
+autobuild an Open Source (GPL) C/C++ Build System Setup.
 
 OPTIONS
 
@@ -544,7 +544,7 @@ check_for_default_linker(){
 bootstrap_project_cmake() {
 	local baseCmakeFile=(
 		"cmake_minimum_required(VERSION ${CMAKEVER})"
-		"project(lpscbuild VERSION 0.1.0)"
+		"project(autobuild VERSION 0.1.0)"
 		"# Enable testing"
 		"include(CTest)"
 		"enable_testing()"
@@ -1009,8 +1009,8 @@ build_project(){
 			mutate_source_code
 		fi
 
-		# back to the lpscbuild directory
-		cd ${LPSCBUILD_DIRECTORY}
+		# back to the autobuild directory
+		cd ${autobuild_DIRECTORY}
 		message "Code coverage report is generated in "${COVERAGE_TEST_REPORT_DIRECTORY}""
 		message "Mutation test report is generated in "${MUTATION_TEST_REPORT_DIRECTORY}""
 		message "Unit Test report is generated in "${UNIT_TEST_REPORT_DIRECTORY}""
