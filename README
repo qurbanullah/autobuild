@@ -1,0 +1,107 @@
+Introduction:
+==========================
+  lpscbuild - Open Source (GPL) C/C++ Automated Build System Environment
+
+Features:
+--------------------------
+  Following features are supported:-
+
+  1. Perform unit testing (presently supports ctest and gtest)
+  2. Perform and report code coverage
+  3. Perform and report Mutation testing
+  4. Highly incremental for rapid partial builds and rapid partial tests
+  5. Fully automated
+
+Dependencies:
+--------------------------
+  1.  GNU GCC Compiler
+  2.  CMake     (A cross-platform open-source make system)
+  3.  gcov      (Part of GCC, may not be included in Distro.)
+  4.  lcov      (front-end for GCC’s coverage testing tool gcov - https://github.com/linux-test-project/lcov )
+  5.  sed       (included by default in most of the Linux Distributions)
+  6.  grep      (included by default in most of the Linux Distributions)
+  7.  gtest     (Optional if intends to use Google Testing Framework - https://github.com/google/googletest/)
+
+      Note: Most of the dependancies are already installed by default in almost all Linux Distribution.
+
+
+Directory Structure:
+--------------------------
+  User should follow the following directory structre:
+
+    .
+    ├── include
+    │   ├── operators
+    │   │   ├── Addition.h
+    │   │   ├── Division.h
+    │   │   ├── Multiplication.h
+    │   │   └── Subtraction.h
+    │   ├── test-common.h
+    │   └── test-suite.h
+    ├── int
+    ├── mutate
+    │   └── operators
+    │       ├── add.csv
+    │       ├── div.csv
+    │       ├── mul.csv
+    │       └── sub.csv
+    ├── src
+    │   ├── operators
+    │   │   ├── Addition.cc
+    │   │   ├── Division.cc
+    │   │   ├── Multiplication.cc
+    │   │   └── Subtraction.cc
+    │   └── operators.cc
+    ├── test
+    │   ├── operators
+    │   │   ├── Addition.test.cc
+    │   │   ├── Division.test.cc
+    │   │   ├── Multiplication.test.cc
+    │   │   └── Subtraction.test.cc
+    │   └── test-suite.c
+
+
+Usage
+--------------------------
+  ./lpscbuild <options> <source_directory> <test_framework>
+
+    Note: if Test Framework not provided, it will default to ctest framework will be used
+
+Examples
+--------------------------
+      # build with all default options. Default options are:
+      # shared libraries, gtest is used as test frameowrk, fresh build, mutation testing enabled
+      ./lpscbuild -a
+
+      # build static libraries.
+      ./lpscbuild -b 'static'
+      ./lpscbuild --build=static
+
+      # build shared libraries.
+      ./lpscbuild -b 'shared'
+      ./lpscbuild --build=shared
+
+      # build fresh by cleaning previously build files
+      ./lpscbuild -f
+
+      # build static libraries.
+      ./lpscbuild -t 'gtest'
+      ./lpscbuild --test-framework=gtest
+
+      # build for mutation tests
+      ./lpscbuild -m
+      ./lpscbuild --mutation-testing
+
+      # build for provided directory
+      ./lpscbuild -d 'directory_path'
+      ./lpscbuild --directory=directory_path
+    
+Reports:
+--------------------------
+  Reports will be available in "build" directory under source directory
+
+TODO:
+--------------------------
+  1.  Bug fixes
+  2.  Improvement in Mutation Testing
+  3.  Improvement in Unit Test and Mutation Test reports
